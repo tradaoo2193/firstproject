@@ -1,74 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Do You Love Me?</title>
+  <meta charset="UTF-8">
+  <title>Do you love me?</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       text-align: center;
+      font-family: sans-serif;
       margin-top: 100px;
-      background-color: #ffe6f0; /* Light pink background */
     }
     h1 {
-      font-size: 2.5em;
-      color: #d6336c; /* Pink text color for the heading */
+      font-size: 2em;
     }
-    button {
-      padding: 15px 30px;
-      font-size: 1.2em;
-      margin: 20px;
-      border: none;
-      border-radius: 10px;
+    .btn {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
     }
     #yesBtn {
-      background-color: #ff66a3; /* Pink button color */
-      color: white;
-    }
-    #noBtn {
-      background-color: #ccc; /* Gray button color */
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-
   <h1>Do you love me?</h1>
-  <button id="yesBtn">Yes ❤️</button>
-  <button id="noBtn">No 😐</button>
+  <button id="yesBtn" class="btn">Yes</button>
+  <button id="noBtn" class="btn">No</button>
 
   <script>
+    let noClickCount = 0;
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
 
-    let noClicks = 0;
-
     noBtn.addEventListener('click', () => {
-      noClicks++;
+      noClickCount++;
 
-      if (noClicks === 1) {
-        yesBtn.style.transform = 'scale(1.25)';
-        noBtn.textContent = 'If you say no, I will very sad 😢';
-      } else if (noClicks === 2) {
-        yesBtn.style.transform = 'scale(1.5)';
-        noBtn.textContent = 'I will very very sad... 😭';
-      } else if (noClicks >= 3) {
+      if (noClickCount === 1) {
+        yesBtn.style.transform = 'scale(2)';
+      } else if (noClickCount === 2) {
+        yesBtn.style.transform = 'scale(4)';
+      } else if (noClickCount === 3) {
+        yesBtn.style.width = '50vw';
+        yesBtn.style.height = '50vh';
+        yesBtn.style.fontSize = '2em';
+      } else if (noClickCount >= 4) {
         yesBtn.style.position = 'fixed';
-        yesBtn.style.top = '0';
-        yesBtn.style.left = '0';
+        yesBtn.style.top = 0;
+        yesBtn.style.left = 0;
         yesBtn.style.width = '100vw';
         yesBtn.style.height = '100vh';
-        yesBtn.style.fontSize = '5em';
-        yesBtn.textContent = 'YES ❤️ FOREVER';
+        yesBtn.style.fontSize = '4em';
+        yesBtn.innerText = "JUST SAY YES";
         noBtn.style.display = 'none';
+        document.querySelector('h1').style.display = 'none';
       }
     });
 
     yesBtn.addEventListener('click', () => {
-      alert('I love you too 😘');
+      alert("YAYYY!!! I KNEW IT =)))");
     });
   </script>
-
 </body>
 </html>
