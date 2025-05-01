@@ -46,29 +46,12 @@
     </div>
 
     <script>
-        let noClickCount = 0;
-
         function handleYes() {
             alert('Yay! You love me!');
         }
 
         function handleNo() {
-            noClickCount++;
-
-            const yesButton = document.querySelector('.yes-button');
-            const noButton = document.querySelector('.no-button');
-
-            if (noClickCount === 1) {
-                yesButton.style.fontSize = '2em'; // 25% bigger
-                noButton.textContent = "If you say no, I will be very sad...";
-            } else if (noClickCount === 2) {
-                yesButton.style.width = '33%'; // Widen to 1/3 of the page
-                noButton.textContent = "I will be very very sad...";
-            } else if (noClickCount >= 3) {
-                yesButton.style.width = '100%'; // Fullscreen
-                yesButton.style.fontSize = '5em'; // Make the "Yes" button huge
-                noButton.textContent = "Please don't break my heart!";
-            }
+            alert('Why did you say no?');
         }
     </script>
 </body>
