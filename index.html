@@ -5,61 +5,104 @@
   <title>Do you love me?</title>
   <style>
     body {
+      background-color: #ffe6f0;
       text-align: center;
-      font-family: sans-serif;
+      font-family: "Comic Sans MS", cursive, sans-serif;
       margin-top: 100px;
+      position: relative;
+      overflow: hidden;
     }
+
     h1 {
       font-size: 2em;
+      color: #ff66b2;
     }
+
     .btn {
-      padding: 10px 20px;
-      font-size: 1em;
-      margin: 10px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s ease;
+      margin: 10px;
     }
+
     #yesBtn {
-      display: inline-block;
+      background-color: #ff66b2;
+      color: white;
+      z-index: 2;
+      position: relative;
+    }
+
+    #noBtn {
+      background-color: #ffb3d1;
+      color: #800040;
+      z-index: 1;
+      position: relative;
+    }
+
+    .heart-bg {
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      right: -50px;
+      bottom: -50px;
+      background-image: url('https://i.imgur.com/dGQ0ofW.png');
+      background-size: 100px;
+      opacity: 0.1;
+      z-index: 0;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-  <h1>Do you love me?</h1>
+  <div class="heart-bg"></div>
+  <h1>Do you love me? 💖</h1>
   <button id="yesBtn" class="btn">Yes</button>
   <button id="noBtn" class="btn">No</button>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://ncs.io/LoveOfMyLife/preview" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <script>
     let noClickCount = 0;
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
+    const h1 = document.querySelector('h1');
 
     noBtn.addEventListener('click', () => {
       noClickCount++;
 
       if (noClickCount === 1) {
         yesBtn.style.transform = 'scale(2)';
+        noBtn.innerText = "If you say no, I will be very sad...";
       } else if (noClickCount === 2) {
         yesBtn.style.transform = 'scale(4)';
+        noBtn.innerText = "I will be VERY VERY sad...";
       } else if (noClickCount === 3) {
+        yesBtn.style.transform = 'scale(1)';
         yesBtn.style.width = '50vw';
         yesBtn.style.height = '50vh';
         yesBtn.style.fontSize = '2em';
+        noBtn.innerText = "Pls don't break my heart 🥺";
       } else if (noClickCount >= 4) {
         yesBtn.style.position = 'fixed';
-        yesBtn.style.top = 0;
-        yesBtn.style.left = 0;
+        yesBtn.style.top = '0';
+        yesBtn.style.left = '0';
         yesBtn.style.width = '100vw';
         yesBtn.style.height = '100vh';
-        yesBtn.style.fontSize = '4em';
-        yesBtn.innerText = "JUST SAY YES";
+        yesBtn.style.fontSize = '5em';
+        yesBtn.innerText = "JUST SAY YES 💗";
+        h1.style.display = 'none';
         noBtn.style.display = 'none';
-        document.querySelector('h1').style.display = 'none';
       }
     });
 
     yesBtn.addEventListener('click', () => {
-      alert("YAYYY!!! I KNEW IT =)))");
+      alert("YAYYY!!! I KNEW IT =))) 💕");
     });
   </script>
 </body>
