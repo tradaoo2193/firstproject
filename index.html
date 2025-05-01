@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Do You Love Me?</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background-color: #ffe6f0;
-    }
-    h1 {
-      font-size: 2.5em;
-      color: #d6336c;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 1.2em;
-      margin: 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    #yesBtn {
-      background-color: #ff66a3;
-      color: white;
-    }
-    #noBtn {
-      background-color: #ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .no-button {
+            background-color: #f44336;
+        }
+    </style>
 </head>
 <body>
+    <h1>Do you love me?</h1>
+    <div class="button-container">
+        <button class="button yes-button" onclick="handleYes()">Yes</button>
+        <button class="button no-button" onclick="handleNo()">No</button>
+    </div>
 
-  <h1>Do you love me?</h1>
-  <button id="yesBtn">Yes ❤️</button>
-  <button id="noBtn">No 😐</button>
+    <script>
+        let noClickCount = 0;
 
-  <script>
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
+        function handleYes() {
+            alert('Yay! You love me!');
+        }
 
-    let noClicks = 0;
+        function handleNo() {
+            noClickCount++;
 
-    noBtn.addEventListener('click', () => {
-      noClicks++;
+            const yesButton = document.querySelector('.yes-button');
+            const noButton = document.querySelector('.no-button');
 
-      if (noClicks === 1) {
-        yesBtn.style.transform = 'scale(1.25)';
-        noBtn.textContent = 'If you say no, I will very sad 😢';
-      } else if (noClicks === 2) {
-        yesBtn.style.transform = 'scale(1.5)';
-        noBtn.textContent = 'I will very very sad... 😭';
-      } else if (noClicks >= 3) {
-        yesBtn.style.position = 'fixed';
-        yesBtn.style.top = '0';
-        yesBtn.style.left = '0';
-        yesBtn.style.width = '100vw';
-        yesBtn.style.height = '100vh';
-        yesBtn.style.fontSize = '5em';
-        yesBtn.textContent = 'YES ❤️ FOREVER';
-        noBtn.style.display = 'none';
-      }
-    });
-
-    yesBtn.addEventListener('click', () => {
-      alert('I love you too 😘');
-    });
-  </script>
-
+            if (noClickCount === 1) {
+                yesButton.style.fontSize = '2em'; // 25% bigger
+                noButton.textContent = "If you say no, I will be very sad...";
+            } else if (noClickCount === 2) {
+                yesButton.style.width = '33%'; // Widen to 1/3 of the page
+                noButton.textContent = "I will be very very sad...";
+            } else if (noClickCount >= 3) {
+                yesButton.style.width = '100%'; // Fullscreen
+                yesButton.style.fontSize = '5em'; // Make the "Yes" button huge
+                noButton.textContent = "Please don't break my heart!";
+            }
+        }
+    </script>
 </body>
 </html>
