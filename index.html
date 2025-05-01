@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Do You Love Me?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #ffe6f0;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #d6336c;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #yesBtn {
+      background-color: #ff66a3;
+      color: white;
+    }
+    #noBtn {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Do you love me?</h1>
+  <button id="yesBtn">Yes ❤️</button>
+  <button id="noBtn">No 😐</button>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    let noClicks = 0;
+
+    noBtn.addEventListener('click', () => {
+      noClicks++;
+
+      if (noClicks === 1) {
+        yesBtn.style.transform = 'scale(1.25)';
+        noBtn.textContent = 'If you say no, I will very sad 😢';
+      } else if (noClicks === 2) {
+        yesBtn.style.transform = 'scale(1.5)';
+        noBtn.textContent = 'I will very very sad... 😭';
+      } else if (noClicks >= 3) {
+        yesBtn.style.position = 'fixed';
+        yesBtn.style.top = '0';
+        yesBtn.style.left = '0';
+        yesBtn.style.width = '100vw';
+        yesBtn.style.height = '100vh';
+        yesBtn.style.fontSize = '5em';
+        yesBtn.textContent = 'YES ❤️ FOREVER';
+        noBtn.style.display = 'none';
+      }
+    });
+
+    yesBtn.addEventListener('click', () => {
+      alert('I love you too 😘');
+    });
+  </script>
+
+</body>
+</html>
